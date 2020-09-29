@@ -1,11 +1,11 @@
 <?
 $cv = array(
     'nom' => 'Maurice',
-    'date_naissance' => '1985-12-10',
-    'adresse' => '1, rue des fleurs 31500 Toulouse',
-    'tel' => '0666666666',
-    'photo' => 'julien.jpg',
-    'metier' => 'Développeur web',
+    'date_naissance' => '2000-12-10',
+    'adresse' => 'La Cantine 31000 Toulouse',
+    'tel' => '03131313131',
+    'photo' => 'maurice.jpg',
+    'metier' => 'As développeur',
     'diplomes' => array(
       'Baccalauréat - Lycée Pierre et Marie Curie' => 2004,
       'BTS - Greta Montpellier' => 2008,
@@ -37,7 +37,31 @@ $cv = array(
     )
 );
 ?>
-<? foreach($cv as $item=>$infos){?>
-    <h2><?= ?></h2>
-<?}
-?>
+<div>
+  <h1><?= $cv['nom'] ?> - <?= $cv['metier'] ?></h1>
+  <img src="img/<?= $cv['photo'] ?>" width=250 alt="<?= $cv['nom'] ?>">
+  <p>age</p>
+  <p><?= $cv['adresse'] ?></p>
+  <p><?= $cv['tel'] ?></p>
+</div>
+<h2>Diplômes</h2>
+<ul>
+  <? arsort($cv['diplomes']);
+  foreach($cv['diplomes'] as $place=>$year){?>
+  <li><?= $year ?> : <?= $place ?></li>
+  <?}?>
+</ul>
+<h2>Expériences</h2>
+<ul>
+  <? foreach($cv['experiences'] as $experience=>$info){?>
+  <li>De <?= $info['debut'] ?> à <?= $info['fin'] ?>: <?= $info['libelle'] ?></li>
+  <?}?>
+</ul>
+<h2>Compétences</h2>
+<table>
+  <?foreach($cv['competences'] as $language=>$note){?>
+    <tr>
+    <th><?= $language ?></th><td><?= $note ?></td>
+    </tr>
+  <?}?>
+</table>
